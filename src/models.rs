@@ -4,4 +4,5 @@ use serde::Serialize;
 pub struct NodeIdentity {
     pub hostname: String,
     pub machine_id: String,
+    pub serial_number: String,
 }
