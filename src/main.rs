@@ -3,7 +3,7 @@ mod collector;
 mod inventory;
 mod metrics;
 mod models;
-mod client;
+
 
 
 use sysinfo::System;
@@ -26,7 +26,7 @@ async fn main() {
         let report = collector::collect_report(&system);
 
         // Send report to Inventory Server
-        match client::register_device(&report).await {
+        match http::client::register_device(&report).await {
             Ok(_) => println!("Report sent successfully."),
             Err(e) => eprintln!("Failed to send report: {}", e),
         }
