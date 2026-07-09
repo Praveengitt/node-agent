@@ -3,6 +3,7 @@ mod collector;
 mod inventory;
 mod metrics;
 mod models;
+mod client;
 
 
 use sysinfo::System;
