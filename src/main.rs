@@ -1,8 +1,8 @@
+mod client;
 mod collector;
 mod inventory;
-mod models;
 mod metrics;
-mod http;
+mod models;
 
 use std::{
     thread,
@@ -10,35 +10,30 @@ use std::{
 };
 
 use sysinfo::System;
+use tokio::time::{sleep, Duration};
 
-fn main() {
-    
+#[tokio::main]
+async fn main() {
+
+    println!("=================================");
+    println!("Node Agent Starting...");
+    println!("=================================");
+
     let mut system = System::new_all();
 
-    let report = collector::collect_report(&system);
-
-    match http::client::register(&report) {
-        Ok(_) => println!("Node report registered successfully."),
-        Err(e) => eprintln!("Error registering node report: {}", e),
-    }
-
-
-   /* loop{
-
+    loop {
+        // Refresh Linux metrics
         system.refresh_all();
 
+        // Build complete report
         let report = collector::collect_report(&system);
 
-        println!(
-            "{}",
-            serde_json::to_string_pretty(&report).unwrap()
-        );
+        // Send report to Inventory Server
+        match client::register_device(&report).await {
+            Ok(_) => println!("Report sent successfully."),
+            Err(e) => eprintln!("Failed to send report: {}", e),
+        }
 
-        println!("---------------------------------------");
-
-        thread::sleep(Duration::from_secs(5));
-
-    } */
-
-
+        sleep(Duration::from_secs(5)).await;
+    }
 }

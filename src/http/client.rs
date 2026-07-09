@@ -1,7 +1,8 @@
-use reqwest::blocking::Client;
+use reqwest::Client;
+
 use crate::models::NodeReport;
 
-pub fn register(report: &NodeReport) -> Result<(), reqwest::Error> {
+pub async fn register(report: &NodeReport) -> Result<(), reqwest::Error> {
     let client = Client::new();
     
     let response = client.post("http://localhost:8080/register")
