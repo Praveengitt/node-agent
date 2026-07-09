@@ -7,7 +7,7 @@ pub struct NodeIdentity {
     pub serial_number: String,
 }
 
-#[dervice(Serialize, Debug)]
+#[derive(Serialize, Debug)]
 pub struct NodeMetrics {
     pub cpu_usage: f32,
     pub memory_used_mb: u64,

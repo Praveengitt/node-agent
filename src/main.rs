@@ -1,6 +1,14 @@
 mod collector;
 mod inventory;
 mod models;
+mod metrics;
+
+use std::{
+    thread,
+    time::Duration,
+};
+
+use sysinfo::System;
 
 fn main() {
     let identity = collector::collect_identity();

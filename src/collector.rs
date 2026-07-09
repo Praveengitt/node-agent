@@ -10,6 +10,8 @@ use crate::metrics::{
     uptime,
 };
 
+use sysinfo::System;
+
 use crate::models::NodeIdentity;
 use crate::models::NodeMetrics;
 
@@ -29,10 +31,10 @@ pub fn collect_metrics(system: &System) -> NodeMetrics {
 
     NodeMetrics {
 
-        cpu: cpu::get_cpu_usage(system)
+        cpu: cpu::get_cpu_usage(system),
 
-        memory: memory::get_memory(system)
+        memory: memory::get_memory(system),
 
-        uptime: uptime::get_uptime(system)
+        uptime: uptime::get_uptime(system),
     }
 }
