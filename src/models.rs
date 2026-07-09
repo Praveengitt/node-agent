@@ -6,3 +6,12 @@ pub struct NodeIdentity {
     pub machine_id: String,
     pub serial_number: String,
 }
+
+#[dervice(Serialize, Debug)]
+pub struct NodeMetrics {
+    pub cpu_usage: f32,
+    pub memory_used_mb: u64,
+    pub memory_total_mb: u64,
+    pub uptime_secs: u64,
+
+}
