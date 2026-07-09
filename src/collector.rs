@@ -10,10 +10,17 @@ use crate::metrics::{
     uptime,
 };
 
+use crate::models::{
+    NodeIdentity,
+    NodeMetrics,
+    NodeReport,
+};
+
 use sysinfo::System;
 
 use crate::models::NodeIdentity;
 use crate::models::NodeMetrics;
+use crate::models::NodeReport;
 
 pub fn collect_identity() -> NodeIdentity {
 
@@ -40,5 +47,19 @@ pub fn collect_metrics(system: &System) -> NodeMetrics {
         memory_total_mb: total,
 
         uptime_secs: uptime::get_uptime(),
+    }
+}
+
+pub fn collect_report(system: &System) -> NodeReport {
+
+    let identity = collect_identity();
+
+    let metrics = collect_metrics(system);
+
+    NodeReport {
+
+        identity: collect_identity(),
+
+        metrics: collect_metrics(system),
     }
 }

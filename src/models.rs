@@ -15,3 +15,9 @@ pub struct NodeMetrics {
     pub uptime_secs: u64,
 
 }
+
+#[derive(Serialize, Debug)]
+pub struct NodeReport {
+    pub identity: NodeIdentity,
+    pub metrics: NodeMetrics,
+}
