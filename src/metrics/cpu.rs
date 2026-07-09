@@ -5,6 +5,6 @@ pub fn get_cpu_usage(system: &System) -> f32 {
 
     cpus.iter()
         .map(|cpu|cpu.cpu_usage())
-        .sum""<f32>()
+        .sum::<f32>()
         / cpus.len() as f32
 }

@@ -38,7 +38,7 @@ fn main() {
 
         println!("---------------------------------------");
 
-        thread.sleep(Duration::from_secs(5));
+        thread::sleep(Duration::from_secs(5));
 
     }
 
