@@ -29,11 +29,15 @@ pub fn collect_identity() -> NodeIdentity {
 
 pub fn collect_metrics(system: &System) -> NodeMetrics {
 
+    let (used, total) = memory::get_memory(system);
+
     NodeMetrics {
 
-        cpu: cpu::get_cpu_usage(system),
+        cpu_usage: cpu::get_cpu_usage(system),
 
-        memory: memory::get_memory(system),
+        memory_used_mb: used,
+
+        memory_total_mb: total,
 
         uptime: uptime::get_uptime(system),
     }
