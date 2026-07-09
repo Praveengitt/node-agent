@@ -18,10 +18,6 @@ use crate::models::{
 
 use sysinfo::System;
 
-use crate::models::NodeIdentity;
-use crate::models::NodeMetrics;
-use crate::models::NodeReport;
-
 pub fn collect_identity() -> NodeIdentity {
 
     NodeIdentity {
@@ -52,10 +48,7 @@ pub fn collect_metrics(system: &System) -> NodeMetrics {
 
 pub fn collect_report(system: &System) -> NodeReport {
 
-    let identity = collect_identity();
-
-    let metrics = collect_metrics(system);
-
+    
     NodeReport {
 
         identity: collect_identity(),
