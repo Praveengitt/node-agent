@@ -2,6 +2,7 @@ mod collector;
 mod inventory;
 mod models;
 mod metrics;
+mod http;
 
 use std::{
     thread,
