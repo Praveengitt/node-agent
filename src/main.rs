@@ -26,7 +26,7 @@ async fn main() {
         let report = collector::collect_report(&system);
 
         // Send report to Inventory Server
-        match http::client::register_device(&report).await {
+        match http::client::register(&report).await {
             Ok(_) => println!("Report sent successfully."),
             Err(e) => eprintln!("Failed to send report: {}", e),
         }
