@@ -14,7 +14,15 @@ fn main() {
     
     let mut system = System::new_all();
 
-    loop{
+    let report = collector::collect_report(&system);
+
+    match http::client::register(&report) {
+        Ok(_) => println!("Node report registered successfully."),
+        Err(e) => eprintln!("Error registering node report: {}", e),
+    }
+
+
+   /* loop{
 
         system.refresh_all();
 
@@ -29,7 +37,7 @@ fn main() {
 
         thread::sleep(Duration::from_secs(5));
 
-    }
+    } */
 
 
 }
