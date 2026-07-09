@@ -1,4 +1,4 @@
-mod client;
+mod http;
 mod collector;
 mod inventory;
 mod metrics;
