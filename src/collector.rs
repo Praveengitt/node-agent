@@ -39,6 +39,6 @@ pub fn collect_metrics(system: &System) -> NodeMetrics {
 
         memory_total_mb: total,
 
-        uptime: uptime::get_uptime(system),
+        uptime_secs: uptime::get_uptime(system),
     }
 }
