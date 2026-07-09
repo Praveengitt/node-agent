@@ -4,10 +4,6 @@ mod inventory;
 mod metrics;
 mod models;
 
-use std::{
-    thread,
-    time::Duration,
-};
 
 use sysinfo::System;
 use tokio::time::{sleep, Duration};
